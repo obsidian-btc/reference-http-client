@@ -24,8 +24,6 @@ client = Vertx::HttpClient.new
 client.host = host
 client.ssl = ssl
 client.port = port
-# client.trust_store_path = './obsidiankeystore.jks'
-# client.trust_store_password = 'superpassword'
 
 request = client.get(request) do |resp|
   puts "got response #{resp.status_code}"
@@ -50,5 +48,3 @@ request.exception_handler { |e| raise e }
 request.write_str(body)
 
 request.end
-
-# curl -H "X-Obsidian-Access-Key: 1uujt/6iFcNdgCKPbz8nkQ==" -H "X-Obsidian-Timestamp: 1234567"  -H "X-Obsidian-Signature: 8800f8f5a95a7f04d3b477dc480f36a3f5511214b8eca043893eaf13d5a847fd"  "api.obsidianexchange.com:/v1/orders"
